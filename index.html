@@ -1,207 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundación Solidaria - Haciendo del mundo un lugar mejor</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Questrial:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/output.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .section-hidden {
-            display: none;
-        }
-        .active-section {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .active-nav {
-            color: #4FB0C6;
-            font-weight: bold;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .donation-option {
-            transition: all 0.3s ease;
-        }
-        .donation-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-navbar {
-            height: 48px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Manos Etéreas</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Questrial:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/output.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body class="bg-gray-50 font-sans">
-    <!-- Encabezado y Navegación -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4">
-            <nav class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <img src="assets/logo-navbar.svg" class="logo-navbar" alt="Fundación Manos Etéreas">
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
-                    <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
-                    <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
-                </div>
-                
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-dark">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </nav>
-        </div>
-        
-        <!-- Menú móvil -->
-        <div id="mobile-menu" class="hidden bg-white shadow-lg py-4 px-4 absolute w-full">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
-                <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
-                <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
-                <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
-                <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
-            </div>
-        </div>
-    </header>
+  <!-- Encabezado y Navegación -->
+  <header class="fixed w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4">
+      <nav class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <img src="assets/logo-navbar.svg" class="logo-navbar" alt="Fundación Manos Etéreas">
+          </div>
 
-    <!-- Sección Home -->
-    <section id="home-section" class="min-h-screen pt-24 pb-16 bg-gradient-to-r from-primary to-secondary flex items-center active-section">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 text-white mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Transformando vidas, construyendo futuro</h1>
-                    <p class="text-xl mb-8">Trabajamos por un mundo más justo y equitativo para todos. Tu apoyo hace la diferencia.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#donate" class="bg-white text-primary px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition" data-section="donate">Hacer una donación</a>
-                        <a href="#about" class="border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition" data-section="about">Conoce más</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Voluntarios trabajando" class="rounded-lg shadow-xl">
-                </div>
-            </div>
-        </div>
-    </section>
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
+            <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
+            <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
+          </div>
 
-    <!-- Sección Quiénes Somos -->
-    <section id="about-section" class="py-16 bg-light section-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Quiénes Somos</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Conoce más sobre nuestra misión, visión y los valores que nos guían</p>
-            
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipo de la fundación" class="rounded-lg shadow-md">
-                </div>
-                <div class="md:w-1/2">
-                    <h3 class="text-2xl font-bold text-dark mb-4">Nuestra Historia</h3>
-                    <p class="text-gray-700 mb-6">Fundación Solidaria nació en 2005 con el objetivo de mejorar las condiciones de vida de comunidades vulnerables. A lo largo de estos años, hemos implementado proyectos de desarrollo social, educación y salud en más de 10 países.</p>
-                    <p class="text-gray-700 mb-8">Nuestro trabajo se centra en crear oportunidades sostenibles que permitan a las personas salir de la pobreza y desarrollar todo su potencial.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center text-white mb-4">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h4 class="font-bold text-dark mb-2">Misión</h4>
-                            <p class="text-gray-600">Promover el desarrollo integral de comunidades en situación de vulnerabilidad.</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-sm">
-                            <div class="bg-accent w-12 h-12 rounded-full flex items-center justify-center text-white mb-4">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <h4 class="font-bold text-dark mb-2">Visión</h4>
-                            <p class="text-gray-600">Ser una organización de referencia en la transformación social.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-dark">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+      </nav>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="hidden bg-white shadow-lg py-4 px-4 absolute w-full">
+      <div class="flex flex-col space-y-4">
+        <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
+        <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
+        <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
+        <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
+        <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección Home -->
+  <section id="home-section" class="min-h-screen pt-24 pb-16 bg-gradient-to-r from-primary to-secondary flex items-center active-section">
+    <div class="container mx-auto px-4 py-16">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 text-white mb-5 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Impulsamos la cultura, la educación y el deporte</h1>
+          <p class="text-xl mb-8">Trabajamos día a día para generar oportunidades y construir un futuro más solidario e inclusivo.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#donate" class="nav-link bg-white text-primary px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition" data-section="donate">Donar</a>
+            <a href="#about" class="nav-link border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition" data-section="about">Conoce más</a>
+          </div>
         </div>
-    </section>
+        <div class="md:w-1/2">
+          <img src="assets/logo-completo-white.svg" class="w-100" alt="Voluntarios trabajando" class="rounded-lg shadow-xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Quiénes Somos -->
+  <section id="about-section" class="py-16 bg-light section-hidden">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Quiénes Somos</h2>
+      <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Conoce más sobre nuestra misión, visión y los valores que nos guían</p>
+
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <div class="space-y-6 text-gray-700 text-lg md:text-xl">
+          <p>
+            Somos una fundación comprometida con el <span class="font-semibold">desarrollo cultural, educativo, deportivo y social</span> de nuestra comunidad.
+            Trabajamos para generar espacios de formación, encuentro y crecimiento que fortalezcan nuestra identidad regional y promuevan una mejor calidad de vida para todas las personas.
+          </p>
+          <p>
+            Entre nuestras acciones, impulsamos <span class="font-semibold">cursos, capacitaciones, congresos y seminarios</span> relacionados con la cultura, la historia y el deporte, favoreciendo el intercambio de experiencias con instituciones de nuestro país y del extranjero.
+          </p>
+          <p>
+            También llevamos adelante <span class="font-semibold">proyectos sociales y comunitarios</span>, colaborando con entidades públicas y privadas en obras de infraestructura, refacciones y mantenimiento de espacios destinados al bienestar colectivo.
+          </p>
+          <p>
+            Creemos en el poder del <span class="font-semibold">arte, la educación y el deporte</span> como herramientas de transformación social. Por eso promovemos espectáculos y actividades que difunden nuestro patrimonio cultural e histórico, a la vez que gestionamos recursos y alianzas estratégicas para que cada proyecto tenga un verdadero impacto en la comunidad.
+          </p>
+          <p>
+            Nuestro compromiso abarca a <span class="font-semibold">todas las etapas de la vida</span>: desde la infancia hasta la adultez mayor, incluyendo a personas con discapacidad, con el objetivo de promover la inclusión, la salud, la prevención y el acceso a oportunidades que permitan un desarrollo integral.
+          </p>
+          <p>
+            En cada una de nuestras iniciativas buscamos construir una comunidad más <span class="font-semibold">solidaria, participativa e inclusiva</span>, donde el conocimiento, la cultura y el deporte sean motores de bienestar y futuro.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Sección Consejo Directivo -->
-    <section id="board-section" class="py-16 bg-white section-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Consejo Directivo</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Conoce a las personas que lideran nuestra organización</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Miembro 1 -->
-                <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Presidente" class="w-full h-60 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-dark">Carlos Rodríguez</h3>
-                        <p class="text-primary font-medium">Presidente</p>
-                        <p class="text-gray-600 mt-3">Con más de 15 años de experiencia en gestión de proyectos sociales.</p>
-                        <div class="flex mt-4 space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miembro 2 -->
-                <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Vicepresidenta" class="w-full h-60 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-dark">Ana Martínez</h3>
-                        <p class="text-primary font-medium">Vicepresidenta</p>
-                        <p class="text-gray-600 mt-3">Especialista en desarrollo comunitario y cooperación internacional.</p>
-                        <div class="flex mt-4 space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miembro 3 -->
-                <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&auto=format&fit=crop&w=644&q=80" alt="Tesorero" class="w-full h-60 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-dark">Jorge López</h3>
-                        <p class="text-primary font-medium">Tesorero</p>
-                        <p class="text-gray-600 mt-3">Economista con amplia experiencia en gestión financiera de ONGs.</p>
-                        <div class="flex mt-4 space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Miembro 4 -->
-                <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Secretaria" class="w-full h-60 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl text-dark">María González</h3>
-                        <p class="text-primary font-medium">Secretaria</p>
-                        <p class="text-gray-600 mt-3">Abogada especializada en derecho internacional y derechos humanos.</p>
-                        <div class="flex mt-4 space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-primary"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section id="board-section" class="py-16 bg-white section-hidden">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Consejo Directivo</h2>
+      <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Conoce a las personas que lideran nuestra organización</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div class="hidden lg:block"></div>
+        <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
+          <img src="assets/profile-picture.jpg" alt="Presidente" class="w-full h-60 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-dark">Aparicio Quiroga, Hugo Miguel</h3>
+            <p class="text-primary font-medium">Presidente</p>
+          </div>
         </div>
-    </section>
+
+        <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
+          <img src="assets/profile-picture.jpg" alt="Secretario" class="w-full h-60 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-dark">Lance Marin, Lautaro Alberto</h3>
+            <p class="text-primary font-medium">Secretario</p>
+          </div>
+        </div>
+
+        <div class="bg-light rounded-lg overflow-hidden shadow-md transition hover:shadow-xl">
+          <img src="assets/profile-picture.jpg" alt="Tesorero" class="w-full h-60 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl text-dark">Figueroa, Matias Leonel</h3>
+            <p class="text-primary font-medium">Tesorero</p>
+          </div>
+        </div>
+        <div class="hidden lg:block"></div>
+      </div>
+    </div>
+  </section>
 
     <!-- Sección Donar -->
     <section id="donate-section" class="py-16 bg-gradient-to-br from-primary to-accent section-hidden">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 py-16">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Donar</h2>
             <p class="text-blue-100 text-center max-w-2xl mx-auto mb-12">Tu contribución nos permite continuar con nuestra labor</p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Opción 1 -->
                 <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
@@ -212,7 +152,7 @@
                     <p class="text-gray-600 mb-6">Realiza una contribución puntual para apoyar nuestros proyectos actuales.</p>
                     <a href="#" class="bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition">Donar ahora</a>
                 </div>
-                
+
                 <!-- Opción 2 -->
                 <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
                     <div class="bg-secondary w-16 h-16 rounded-full flex items-center justify-center text-white mx-auto mb-6">
@@ -222,7 +162,7 @@
                     <p class="text-gray-600 mb-6">Conviértete en socio y aporta mensualmente para un impacto continuo.</p>
                     <a href="#" class="bg-secondary text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition">Hacerme socio</a>
                 </div>
-                
+
                 <!-- Opción 3 -->
                 <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
                     <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center text-white mx-auto mb-6">
@@ -233,7 +173,7 @@
                     <a href="#contact" class="bg-accent text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition" data-section="contact">Contactar</a>
                 </div>
             </div>
-            
+
             <!-- Formulario de donación -->
             <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl mx-auto">
                 <h3 class="text-2xl font-bold text-dark mb-6 text-center">Formulario de Donación</h3>
@@ -242,12 +182,12 @@
                         <label class="block text-gray-700 mb-2" for="name">Nombre completo</label>
                         <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
                     </div>
-                    
+
                     <div class="md:col-span-2">
                         <label class="block text-gray-700 mb-2" for="email">Correo electrónico</label>
                         <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
                     </div>
-                    
+
                     <div>
                         <label class="block text-gray-700 mb-2" for="amount">Monto a donar</label>
                         <select id="amount" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
@@ -258,7 +198,7 @@
                             <option value="other">Otro monto</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label class="block text-gray-700 mb-2" for="payment">Método de pago</label>
                         <select id="payment" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
@@ -268,7 +208,7 @@
                             <option value="transfer">Transferencia bancaria</option>
                         </select>
                     </div>
-                    
+
                     <div class="md:col-span-2">
                         <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-dark transition">Procesar donación</button>
                     </div>
@@ -278,205 +218,165 @@
     </section>
 
     <!-- Sección Contacto -->
-    <section id="contact-section" class="py-16 bg-light section-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Contacto</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Estamos aquí para responder tus preguntas y escuchar tus sugerencias</p>
-            
-            <div class="flex flex-col md:flex-row gap-10">
-                <div class="md:w-1/2">
-                    <div class="bg-white rounded-lg shadow-md p-8">
-                        <h3 class="text-2xl font-bold text-dark mb-6">Envía un mensaje</h3>
-                        <form>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="contact-name">Nombre</label>
-                                <input type="text" id="contact-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="contact-email">Correo electrónico</label>
-                                <input type="email" id="contact-email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="contact-subject">Asunto</label>
-                                <input type="text" id="contact-subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2" for="contact-message">Mensaje</label>
-                                <textarea id="contact-message" rows="5" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-dark transition">Enviar mensaje</button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2">
-                    <div class="bg-white rounded-lg shadow-md p-8 h-full">
-                        <h3 class="text-2xl font-bold text-dark mb-6">Información de Contacto</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Dirección</h4>
-                                    <p class="text-gray-600">Av. Principal #123, Ciudad</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Teléfono</h4>
-                                    <p class="text-gray-600">+1 234 567 8900</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Email</h4>
-                                    <p class="text-gray-600">info@fundacionsolidaria.org</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-dark">Horario de atención</h4>
-                                    <p class="text-gray-600">Lunes a Viernes: 9:00 - 17:00</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10">
-                            <h4 class="font-bold text-dark mb-4">Síguenos en redes sociales</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="bg-gray-100 w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="contact-section" class="py-16 bg-light section-hidden">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-dark mb-4">Contacto</h2>
+      <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">Estamos aquí para responder tus preguntas y escuchar tus sugerencias</p>
 
-    <!-- Pie de página -->
-    <footer class="bg-dark text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="bg-white w-8 h-8 rounded-full flex items-center justify-center text-primary font-bold mr-2">FS</div>
-                        <span class="text-xl font-bold">Fundación Solidaria</span>
-                    </div>
-                    <p class="text-gray-400">Trabajamos por un mundo más justo y equitativo para todos.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Enlaces rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition nav-link" data-section="home">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition nav-link" data-section="about">Quiénes Somos</a></li>
-                        <li><a href="#board" class="text-gray-400 hover:text-white transition nav-link" data-section="board">Consejo Directivo</a></li>
-                        <li><a href="#donate" class="text-gray-400 hover:text-white transition nav-link" data-section="donate">Donar</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition nav-link" data-section="contact">Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Contacto</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Av. Principal #123, Ciudad</li>
-                        <li>+1 234 567 8900</li>
-                        <li>info@fundacionsolidaria.org</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Suscríbete para recibir nuestras novedades</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Tu email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
-                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-accent transition">Enviar</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 Fundación Solidaria. Todos los derechos reservados.</p>
-            </div>
+      <div class="flex flex-col md:flex-row gap-10">
+        <div class="md:w-1/2">
+          <div class="mt-10">
+            <h4 class="font-bold text-dark mb-4">Ubicación</h4>
+            <div id="map" class="h-64 rounded-lg"></div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Navegación entre secciones
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            // Mostrar/ocultar menú móvil
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
-            // Navegación entre secciones
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Obtener la sección objetivo
-                    const targetSection = this.getAttribute('data-section');
-                    
-                    // Ocultar todas las secciones
-                    document.querySelectorAll('section').forEach(section => {
-                        section.classList.add('section-hidden');
-                        section.classList.remove('active-section');
-                    });
-                    
-                    // Mostrar la sección objetivo
-                    document.getElementById(`${targetSection}-section`).classList.remove('section-hidden');
-                    document.getElementById(`${targetSection}-section`).classList.add('active-section');
-                    
-                    // Actualizar navegación activa
-                    navLinks.forEach(navLink => {
-                        navLink.classList.remove('active-nav');
-                    });
-                    this.classList.add('active-nav');
-                    
-                    // Cerrar menú móvil si está abierto
-                    mobileMenu.classList.add('hidden');
-                    
-                    // Scroll suave hacia arriba
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            });
+        <div class="md:w-1/2">
+          <div class="bg-white rounded-lg shadow-md p-8 h-full">
+            <h3 class="text-2xl font-bold text-dark mb-6">Información de Contacto</h3>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark">Dirección</h4>
+                  <p class="text-gray-600">Manzana 383 B Lote 3, Barrio 17 de Octubre, Ciudad de Salta, Salta</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark">Teléfono</h4>
+                  <p class="text-gray-600">+549 (387) 563 0421</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="bg-primary w-10 h-10 rounded-full flex items-center justify-center text-white mr-4">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-dark">Email</h4>
+                  <p class="text-gray-600">manos.etereas@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <div class="flex items-center mb-4">
+                <img src="assets/logo-simplificado.svg" alt="">
+                <span class="text-xl font-bold">Fundación Manos Etereas</span>
+            </div>
+            <p class="text-gray-400">Trabajamos por un mundo más justo y equitativo para todos.</p>
+        </div>
+
+        <div>
+            <h4 class="text-lg font-bold mb-4">Enlaces rápidos</h4>
+            <ul class="space-y-2">
+                <li><a href="#home" class="text-gray-400 hover:text-white transition nav-link" data-section="home">Home</a></li>
+                <li><a href="#about" class="text-gray-400 hover:text-white transition nav-link" data-section="about">Quiénes Somos</a></li>
+                <li><a href="#board" class="text-gray-400 hover:text-white transition nav-link" data-section="board">Consejo Directivo</a></li>
+                <li><a href="#donate" class="text-gray-400 hover:text-white transition nav-link" data-section="donate">Donar</a></li>
+                <li><a href="#contact" class="text-gray-400 hover:text-white transition nav-link" data-section="contact">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-lg font-bold mb-4">Contacto</h4>
+            <ul class="space-y-2 text-gray-400">
+                <li>Manzana 383 B Lote 3, Barrio 17 de Octubre, Ciudad de Salta, Salta</li>
+                <li>+549 (387) 563 0421</li>
+                <li>manos.etereas@gmail.com</li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2025 Fundación Manos Etéreas. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+      function initMap() {
+        // Coordenadas de ejemplo (puedes cambiarlas por las reales)
+        const fundacionCoords = [40.4168, -3.7038]; // Madrid, España
+
+        // Crear el mapa
+        const map = L.map('map').setView((-24.788992,-65.4147584), 15);
+
+        // Agregar capa de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Agregar marcador
+        L.marker(fundacionCoords)
+          .addTo(map)
+          .bindPopup('Fundación Manos Etereas<br>Av. Principal #123, Ciudad')
+          .openPopup();
+      }
+
+      // Navegación entre secciones
+      document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Mostrar/ocultar menú móvil
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
         });
-    </script>
+
+        // Navegación entre secciones
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Obtener la sección objetivo
+            const targetSection = this.getAttribute('data-section');
+
+            // Ocultar todas las secciones
+            document.querySelectorAll('section').forEach(section => {
+              section.classList.add('section-hidden');
+              section.classList.remove('active-section');
+            });
+
+            // Mostrar la sección objetivo
+            document.getElementById(`${targetSection}-section`).classList.remove('section-hidden');
+            document.getElementById(`${targetSection}-section`).classList.add('active-section');
+
+            // Actualizar navegación activa
+            navLinks.forEach(navLink => {
+              navLink.classList.remove('active-nav');
+            });
+            this.classList.add('active-nav');
+
+            // Cerrar menú móvil si está abierto
+            mobileMenu.classList.add('hidden');
+
+            // Scroll suave hacia arriba
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          });
+        });
+      });
+  </script>
 </body>
 </html>
