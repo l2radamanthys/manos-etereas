@@ -24,7 +24,7 @@
             <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
             <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
             <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
-            <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
+            <a href="#donate" class="nav-link text-contrast-sencodary font-bold hover:text-contrast-sencodary transition" data-section="donate">Donar</a>
             <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
           </div>
 
@@ -39,10 +39,10 @@
     <!-- Menú móvil -->
     <div id="mobile-menu" class="hidden bg-white shadow-lg py-4 px-4 absolute w-full">
       <div class="flex flex-col space-y-4">
-        <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Home</a>
+        <a href="#home" class="nav-link text-gray-700 hover:text-primary transition active-nav" data-section="home">Inicio</a>
         <a href="#about" class="nav-link text-gray-700 hover:text-primary transition" data-section="about">Quiénes Somos</a>
         <a href="#board" class="nav-link text-gray-700 hover:text-primary transition" data-section="board">Consejo Directivo</a>
-        <a href="#donate" class="nav-link text-gray-700 hover:text-primary transition" data-section="donate">Donar</a>
+        <a href="#donate" class="nav-link text-contrast-sencodary hover:text-contrast-sencodary transition" data-section="donate">Donar</a>
         <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition" data-section="contact">Contacto</a>
       </div>
     </div>
@@ -56,7 +56,12 @@
           <h1 class="text-4xl md:text-5xl font-bold mb-6">Impulsamos la cultura, la educación y el deporte</h1>
           <p class="text-xl mb-8">Trabajamos día a día para generar oportunidades y construir un futuro más solidario e inclusivo.</p>
           <div class="flex flex-wrap gap-4">
-            <a href="#donate" class="nav-link bg-white text-primary px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition" data-section="donate">Donar</a>
+            <a
+              href="#donate"
+              class="nav-link bg-contrast-primary text-dark px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition"
+              data-section="donate">
+              COMO DONAR
+            </a>
             <a href="#about" class="nav-link border-2 border-white text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-primary transition" data-section="about">Conoce más</a>
           </div>
         </div>
@@ -94,6 +99,9 @@
           <p>
             En cada una de nuestras iniciativas buscamos construir una comunidad más <span class="font-semibold">solidaria, participativa e inclusiva</span>, donde el conocimiento, la cultura y el deporte sean motores de bienestar y futuro.
           </p>
+          <div class="text-center mt-2">
+            <img src="assets/logo-completo.svg" alt="" class="mx-auto w-64">
+          </div>
         </div>
       </div>
     </div>
@@ -135,86 +143,61 @@
     </div>
   </section>
 
-    <!-- Sección Donar -->
-    <section id="donate-section" class="py-16 bg-gradient-to-br from-primary to-accent section-hidden">
-        <div class="container mx-auto px-4 py-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Donar</h2>
-            <p class="text-blue-100 text-center max-w-2xl mx-auto mb-12">Tu contribución nos permite continuar con nuestra labor</p>
+  <!-- Sección Donar -->
+  <section id="donate-section" class="py-16 bg-gradient-to-br from-primary to-accent section-hidden">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-4">Como Donar</h2>
+      <p class="text-blue-100 text-center max-w-2xl mx-auto mb-12">Tu contribución nos permite continuar con nuestra labor</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <!-- Opción 1 -->
-                <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
-                    <div class="bg-primary w-16 h-16 rounded-full flex items-center justify-center text-white mx-auto mb-6">
-                        <i class="fas fa-gift text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-dark mb-4">Donación Única</h3>
-                    <p class="text-gray-600 mb-6">Realiza una contribución puntual para apoyar nuestros proyectos actuales.</p>
-                    <a href="#" class="bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition">Donar ahora</a>
-                </div>
+      <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-neutral-200">
+        <h2 class="text-xl font-bold text-brand-600 mb-4">
+          Donar por Transferencia Bancaria
+        </h2>
 
-                <!-- Opción 2 -->
-                <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
-                    <div class="bg-secondary w-16 h-16 rounded-full flex items-center justify-center text-white mx-auto mb-6">
-                        <i class="fas fa-calendar-check text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-dark mb-4">Donación Mensual</h3>
-                    <p class="text-gray-600 mb-6">Conviértete en socio y aporta mensualmente para un impacto continuo.</p>
-                    <a href="#" class="bg-secondary text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition">Hacerme socio</a>
-                </div>
-
-                <!-- Opción 3 -->
-                <div class="donation-option bg-white rounded-lg p-8 text-center shadow-lg">
-                    <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center text-white mx-auto mb-6">
-                        <i class="fas fa-hands-helping text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-dark mb-4">Donación en Especie</h3>
-                    <p class="text-gray-600 mb-6">Contribuye con bienes o servicios que necesitemos para nuestros proyectos.</p>
-                    <a href="#contact" class="bg-accent text-white px-6 py-3 rounded-full font-bold hover:bg-dark transition" data-section="contact">Contactar</a>
-                </div>
-            </div>
-
-            <!-- Formulario de donación -->
-            <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl mx-auto">
-                <h3 class="text-2xl font-bold text-dark mb-6 text-center">Formulario de Donación</h3>
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="md:col-span-2">
-                        <label class="block text-gray-700 mb-2" for="name">Nombre completo</label>
-                        <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <label class="block text-gray-700 mb-2" for="email">Correo electrónico</label>
-                        <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                    </div>
-
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="amount">Monto a donar</label>
-                        <select id="amount" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            <option value="25">$25</option>
-                            <option value="50">$50</option>
-                            <option value="100">$100</option>
-                            <option value="250">$250</option>
-                            <option value="other">Otro monto</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-gray-700 mb-2" for="payment">Método de pago</label>
-                        <select id="payment" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                            <option value="credit">Tarjeta de crédito</option>
-                            <option value="debit">Tarjeta de débito</option>
-                            <option value="paypal">PayPal</option>
-                            <option value="transfer">Transferencia bancaria</option>
-                        </select>
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-dark transition">Procesar donación</button>
-                    </div>
-                </form>
-            </div>
+        <div class="space-y-2 text-neutral-700">
+          <p><span class="font-semibold">Nombre de la Cuenta:</span> FUNDACION MANOS ETEREAS</p>
+          <p><span class="font-semibold">Banco:</span> CREDICOOP</p>
+          <p><span class="font-semibold">Cuenta Corriente en Pesos:</span> 030548/1</p>
+          <p><span class="font-semibold">Sucursal:</span> 085</p>
+          <p><span class="font-semibold">CUIT:</span> 30-71875023-3</p>
+          <p><span class="font-semibold">CBU:</span> 1910085855008503054814</p>
         </div>
-    </section>
+
+        <div class="mt-6 text-sm text-neutral-600">
+          Para enviar el comprobante de depósito, informar su destino o solicitar recibo
+          podés escribir a
+          <a href="mailto:manos.etereas@gmail.com?subject=Donaciones"
+            class="text-brand-600 font-medium hover:underline text-primary">
+            manos.etereas@gmail.com
+          </a>
+          asunto Donaciones. <span class="font-semibold">¡Gracias!</span>
+        </div>
+      </div>
+
+      <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 border border-neutral-200 mt-4">
+        <h2 class="text-xl font-bold text-brand-600 mb-4">
+          Donar a través de Donar Online
+        </h2>
+
+        <p class="text-neutral-700 mb-4">
+          Podés realizar tu aporte de manera segura y rápida a través de la plataforma
+          <span class="font-semibold">Donar Online</span>.
+          Allí podrás elegir el monto y la frecuencia de tu donación.
+        </p>
+
+        <a href="https://donaronline.org/fundacion-manos-etereas" target="_blank"
+          class="block w-full text-center bg-brand-500 hover:bg-brand-600 text-white bg-primary font-semibold py-3 px-4 rounded-lg transition-colors">
+          Donar Ahora
+        </a>
+
+        <p class="mt-4 text-sm text-neutral-600">
+          Serás redirigido al sitio oficial de <span class="font-medium">Donar Online</span>
+          para completar tu contribución de forma segura.
+        </p>
+      </div>
+
+    </div>
+  </section>
 
     <!-- Sección Contacto -->
   <section id="contact-section" class="py-16 bg-light section-hidden">
